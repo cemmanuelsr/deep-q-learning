@@ -9,13 +9,7 @@ from tensorflow.keras.optimizers import Adam
 from DeepQLearning import DeepQLearning
 
 env = gym.make('LunarLander-v2')
-np.random.seed(0)
-
-# Actions:
-# 0: Do nothing
-# 1: Fire left engine
-# 2: Fire down engine
-# 3: Fire right engine
+np.random.seed(42)
 
 print('State space: ', env.observation_space)
 print('Action space: ', env.action_space)
@@ -43,8 +37,8 @@ plt.plot(rewards)
 plt.xlabel('Episodes')
 plt.ylabel('# Rewards')
 plt.title('# Rewards vs Episodes')
-plt.savefig("results/lunar_lander_DeepLearning.jpg")     
+plt.savefig("../results/lunar_lander_deep_qlearning.jpg")     
 plt.close()
 
-model.save('data/model_lunar_land')
+model.save('../models/model_lunar_land')
 

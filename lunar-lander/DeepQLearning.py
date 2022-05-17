@@ -4,12 +4,6 @@ from keras.activations import relu, linear
 
 class DeepQLearning:
 
-    #
-    # Implementacao do algoritmo proposto em 
-    # Playing Atari with Deep Reinforcement Learning, Mnih et al., 2013
-    # https://arxiv.org/abs/1312.5602
-    #
-
     def __init__(self, env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, model):
         self.env = env
         self.gamma = gamma

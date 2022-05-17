@@ -4,6 +4,7 @@ import numpy as np
 from tensorflow import keras
 from collections import deque
 from Model import Model
+from tensorflow.keras.optimizers import Adam
 from DeepQLearning import DeepQLearning
 import argparse
 
@@ -21,6 +22,8 @@ print('Action space: ', env.action_space)
 
 if args.train:
     model = Model(env)
+    model.summary()
+    model.compile(loss='mse', optimizer=Adam(learning_rate=0.001))
 
     gamma = 0.99 
     epsilon = 1.0

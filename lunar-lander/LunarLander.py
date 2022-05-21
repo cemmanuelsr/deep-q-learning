@@ -9,9 +9,9 @@ from DeepQLearning import DeepQLearning
 import argparse
 
 parser = argparse.ArgumentParser(prog='LunarLander')
-parser.add_argument('-t', '--train', type=bool, default=True)
-parser.add_argument('-r', '--result', type=str, default='lunar_land')
-parser.add_argument('-m', '--model', type=str, default='lunar_lander_deep_qlearning.jpg')
+parser.add_argument('--train')
+parser.add_argument('-r', '--result', type=str, default='lunar_land.jpg')
+parser.add_argument('-m', '--model', type=str, default='lunar_lander_deep_qlearning')
 args = parser.parse_args()
 
 env = gym.make('LunarLander-v2')
@@ -20,7 +20,7 @@ np.random.seed(42)
 print('State space: ', env.observation_space)
 print('Action space: ', env.action_space)
 
-if args.train:
+if args.train is not None:
     model = Model(env)
     model.summary()
     model.compile(loss='mse', optimizer=Adam(learning_rate=0.001))

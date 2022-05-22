@@ -9,10 +9,10 @@ from DeepQLearning import DeepQLearning
 import argparse
 
 parser = argparse.ArgumentParser(prog='LunarLander')
-parser.add_argument('--train')
+parser.add_argument('-t', '--train')
 parser.add_argument('-r', '--result', type=str, default='lunar_land.jpg')
 parser.add_argument('-m', '--model', type=str, default='lunar_lander_deep_qlearning')
-args = parser.parse_args()
+args, _ = parser.parse_known_args()
 
 env = gym.make('LunarLander-v2')
 np.random.seed(42)
@@ -29,7 +29,7 @@ if args.train is not None:
     epsilon = 1.0
     epsilon_min = 0.01
     epsilon_dec = 0.99
-    episodes = 1000
+    episodes = 500
     batch_size = 64
     memory = deque(maxlen=500000) 
 
@@ -52,8 +52,8 @@ else:
     rewards = 0
     steps = 0
 
-    while not done and steps < 250:
-        Q_values = model.predict(state[np.newaxis])
+    while not done and steps < 500:
+        Q_values = model.predict(state[np.newaxis], verbose=0)
         action = np.argmax(Q_values[0])
         state, reward, done, info = env.step(action)
         rewards += reward

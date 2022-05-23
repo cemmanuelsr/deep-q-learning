@@ -32,8 +32,9 @@ if args.train is not None:
     episodes = 500
     batch_size = 64
     memory = deque(maxlen=500000) 
+    max_steps = 2500
 
-    DQN = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, model)
+    DQN = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model)
     rewards = DQN.train()
 
     import matplotlib.pyplot as plt

@@ -52,7 +52,7 @@ class DoubleDeepQLearning:
             
             # usando os q-valores para atualizar os pesos da rede
             targets_full[[indexes], [actions]] = targets
-            self.q_network.fit(states, targets_full, epochs=1, verbose=0)
+            self.target.fit(states, targets_full, epochs=1, verbose=0)
             
             if self.epsilon > self.epsilon_min:
                 self.epsilon *= self.epsilon_dec
@@ -73,7 +73,7 @@ class DoubleDeepQLearning:
                 state = next_state
                 self.experience_replay()
                 if i % self.update_target_frequency == 0:
-                    self.target.set_weights(self.q_network.get_weights())
+                    self.q_network.set_weights(self.target.get_weights())
                 if terminal:
                     print(f'Episódio: {i+1}/{self.episodes}. Score: {score}')
                     break

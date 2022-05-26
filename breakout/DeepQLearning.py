@@ -40,10 +40,10 @@ class DeepQLearning:
             next_states = np.squeeze(next_states)
 
             # usando o modelo para selecionar as melhores acoes
-            next_max = np.amax(self.model.predict_on_batch(next_states, verbose=0), axis=1)
+            next_max = np.amax(self.model.predict_on_batch(next_states), axis=1)
             
             targets = rewards + self.gamma * (next_max) * (1 - terminals)
-            targets_full = self.model.predict_on_batch(states, verbose=0)
+            targets_full = self.model.predict_on_batch(states)
             indexes = np.array([i for i in range(self.batch_size)])
             
             # usando os q-valores para atualizar os pesos da rede
@@ -62,10 +62,9 @@ class DeepQLearning:
             terminal = False
             while not terminal:
                 action = self.select_action(state)
-                self.env.render()
                 next_state, reward, terminal, _ = self.env.step(action)
                 score += reward
-                next_state = np.reshape(next_state, (1, self.env.observation_space.shape[0]))
+                next_state = np.reshape(next_state, (1, next_state.shape[0], next_state.shape[1], next_state.shape[2]))
                 self.experience(state, action, reward, next_state, terminal)
                 state = next_state
                 self.experience_replay()

@@ -6,7 +6,6 @@ import numpy as np
 from tensorflow import keras
 from collections import deque
 from Model import Model
-from tensorflow.keras.optimizers import Adam
 from DeepQLearning import DeepQLearning
 from DoubleDeepQLearning import DoubleDeepQLearning
 import argparse
@@ -16,7 +15,7 @@ warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(prog='LunarLander')
 parser.add_argument('-t', '--train', action='store_true')
-parser.add_argument('-d', '--double')
+parser.add_argument('-d', '--double', action='store_true')
 parser.add_argument('-r', '--result', type=str, default='lunar_land.jpg')
 parser.add_argument('-m', '--model', type=str, default='lunar_lander')
 args = parser.parse_args()
@@ -30,7 +29,7 @@ print('Action space: ', env.action_space)
 if args.train:
     model = Model(env)
     model.summary()
-    model.compile(loss='mse', optimizer=Adam(learning_rate=0.001))
+    model.compile(loss='mse', optimizer='adam')
 
     gamma = 0.99 
     epsilon = 1.0
@@ -41,7 +40,7 @@ if args.train:
     memory = deque(maxlen=500000) 
     max_steps = 2500
 
-    if args.double is not None:
+    if args.double:
         target_update_frequency = 10
         algorithm = DoubleDeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, target_update_frequency)
         print('Training with DDQN approach')

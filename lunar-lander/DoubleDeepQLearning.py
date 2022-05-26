@@ -17,6 +17,7 @@ class DoubleDeepQLearning:
         self.max_steps = max_steps
         self.q_network = model
         self.target = clone_model(model)
+        self.target.compile(loss='mse', optimizer='adam')
         self.update_target_frequency = update_target_frequency
 
     def select_action(self, state):

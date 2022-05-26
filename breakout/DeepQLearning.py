@@ -18,8 +18,8 @@ class DeepQLearning:
     def select_action(self, state):
         if np.random.rand() < self.epsilon:
             return random.randrange(self.env.action_space.n)
-        action = self.model.predict(state)
-        return np.argmax(action[0])
+        action = self.model.predict(state, verbose=0)
+        return np.argmax(action)
 
     # cria uma memoria longa de experiencias
     def experience(self, state, action, reward, next_state, terminal):
@@ -40,10 +40,10 @@ class DeepQLearning:
             next_states = np.squeeze(next_states)
 
             # usando o modelo para selecionar as melhores acoes
-            next_max = np.amax(self.model.predict_on_batch(next_states), axis=1)
+            next_max = np.amax(self.model.predict_on_batch(next_states, verbose=0), axis=1)
             
             targets = rewards + self.gamma * (next_max) * (1 - terminals)
-            targets_full = self.model.predict_on_batch(states)
+            targets_full = self.model.predict_on_batch(states, verbose=0)
             indexes = np.array([i for i in range(self.batch_size)])
             
             # usando os q-valores para atualizar os pesos da rede
@@ -57,7 +57,7 @@ class DeepQLearning:
         rewards = []
         for i in range(self.episodes+1):
             state = self.env.reset()
-            state = np.reshape(state, (1, self.env.observation_space.shape[0]))
+            state = np.reshape(state, (1, state.shape[0], state.shape[1], state.shape[2]))
             score = 0
             terminal = False
             while not terminal:

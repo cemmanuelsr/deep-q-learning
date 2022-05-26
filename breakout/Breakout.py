@@ -17,7 +17,7 @@ parser.add_argument('-t', '--train', action='store_true')
 parser.add_argument('-m', '--model', type=str, default='breakout')
 args = parser.parse_args()
 
-env = gym.make('ALE/Breakout-v5', render_mode='human')
+env = gym.make('ALE/Breakout-v5')
 np.random.seed(42)
 
 print('State space: ', env.observation_space)

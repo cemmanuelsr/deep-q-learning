@@ -9,7 +9,7 @@ def Model(env):
         keras.layers.Dropout(0.25),
         keras.layers.Dense(128, activation="relu"),
         keras.layers.Dropout(0.5),
-        keras.layers.Dense(4, activation="softmax")
+        keras.layers.Dense(env.action_space.n, activation="softmax")
     ])
 
     return model

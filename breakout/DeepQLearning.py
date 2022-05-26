@@ -4,7 +4,7 @@ from keras.activations import relu, linear
 
 class DeepQLearning:
 
-    def __init__(self, env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model):
+    def __init__(self, env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, model):
         self.env = env
         self.gamma = gamma
         self.epsilon = epsilon
@@ -13,7 +13,6 @@ class DeepQLearning:
         self.episodes = episodes
         self.batch_size = batch_size
         self.memory = memory
-        self.max_steps = max_steps
         self.model = model
 
     def select_action(self, state):
@@ -60,7 +59,8 @@ class DeepQLearning:
             state = self.env.reset()
             state = np.reshape(state, (1, self.env.observation_space.shape[0]))
             score = 0
-            for _ in range(self.max_steps):
+            terminal = False
+            while not terminal:
                 action = self.select_action(state)
                 self.env.render()
                 next_state, reward, terminal, _ = self.env.step(action)
@@ -69,9 +69,7 @@ class DeepQLearning:
                 self.experience(state, action, reward, next_state, terminal)
                 state = next_state
                 self.experience_replay()
-                if terminal:
-                    print(f'Episódio: {i+1}/{self.episodes}. Score: {score}')
-                    break
+            print(f'Episódio: {i+1}/{self.episodes}. Score: {score}')
             rewards.append(score)
 
         return rewards

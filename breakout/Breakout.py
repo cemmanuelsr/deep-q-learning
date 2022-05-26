@@ -6,22 +6,18 @@ import numpy as np
 from tensorflow import keras
 from collections import deque
 from Model import Model
-from tensorflow.keras.optimizers import Adam
 from DeepQLearning import DeepQLearning
-from DoubleDeepQLearning import DoubleDeepQLearning
 import argparse
 
 import warnings
 warnings.filterwarnings("ignore")
 
-parser = argparse.ArgumentParser(prog='LunarLander')
+parser = argparse.ArgumentParser(prog='Breakout')
 parser.add_argument('-t', '--train', action='store_true')
-parser.add_argument('-d', '--double')
-parser.add_argument('-r', '--result', type=str, default='lunar_land.jpg')
-parser.add_argument('-m', '--model', type=str, default='lunar_lander')
+parser.add_argument('-m', '--model', type=str, default='breakout')
 args = parser.parse_args()
 
-env = gym.make('LunarLander-v2')
+env = gym.make('ALE/Breakout-v5')
 np.random.seed(42)
 
 print('State space: ', env.observation_space)
@@ -30,7 +26,7 @@ print('Action space: ', env.action_space)
 if args.train:
     model = Model(env)
     model.summary()
-    model.compile(loss='mse', optimizer=Adam(learning_rate=0.001))
+    model.compile(loss='sparse_categorical_crossentropy', optimizer='nadam')
 
     gamma = 0.99 
     epsilon = 1.0
@@ -39,15 +35,9 @@ if args.train:
     episodes = 500
     batch_size = 64
     memory = deque(maxlen=500000) 
-    max_steps = 2500
 
-    if args.double is not None:
-        target_update_frequency = 10
-        algorithm = DoubleDeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, target_update_frequency)
-        print('Training with DDQN approach')
-    else:
-        algorithm = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model)
-        print('Training with DQN approach')
+    algorithm = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, model)
+    print('Training with DQN approach')
     rewards = algorithm.train()
 
     import matplotlib.pyplot as plt
@@ -55,7 +45,7 @@ if args.train:
     plt.xlabel('Episodes')
     plt.ylabel('# Rewards')
     plt.title('# Rewards vs Episodes')
-    plt.savefig(f"../results/{args.result}")     
+    plt.savefig(f"../results/{args.model}.jpg")     
     plt.close()
 
     model.save(f'../models/{args.model}')

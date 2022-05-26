@@ -1,3 +1,5 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
 import gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,12 +8,17 @@ from collections import deque
 from Model import Model
 from tensorflow.keras.optimizers import Adam
 from DeepQLearning import DeepQLearning
+from DoubleDeepQLearning import DoubleDeepQLearning
 import argparse
+
+import warnings
+warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(prog='LunarLander')
 parser.add_argument('-t', '--train')
+parser.add_argument('-d', '--double')
 parser.add_argument('-r', '--result', type=str, default='lunar_land.jpg')
-parser.add_argument('-m', '--model', type=str, default='lunar_lander_deep_qlearning')
+parser.add_argument('-m', '--model', type=str, default='lunar_lander')
 args, _ = parser.parse_known_args()
 
 env = gym.make('LunarLander-v2')
@@ -34,8 +41,14 @@ if args.train is not None:
     memory = deque(maxlen=500000) 
     max_steps = 2500
 
-    DQN = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model)
-    rewards = DQN.train()
+    if args.double is not None:
+        target_update_frequency = 10
+        algorithm = DoubleDeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, target_update_frequency)
+        print('Training with DDQN approach')
+    else:
+        algorithm = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model)
+        print('Training with DQN approach')
+    rewards = algorithm.train()
 
     import matplotlib.pyplot as plt
     plt.plot(rewards)

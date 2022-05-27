@@ -17,7 +17,7 @@ parser.add_argument('-t', '--train', action='store_true')
 parser.add_argument('-m', '--model', type=str, default='breakout')
 args = parser.parse_args()
 
-env = gym.make('ALE/Breakout-v5')
+env = gym.make('ALE/Breakout-v5', render_mode='human')
 np.random.seed(42)
 
 print('State space: ', env.observation_space)
@@ -32,8 +32,8 @@ if args.train:
     epsilon = 1.0
     epsilon_min = 0.01
     epsilon_dec = 0.99
-    episodes = 500
-    batch_size = 32
+    episodes = 200
+    batch_size = 64
     memory = deque(maxlen=500000) 
 
     algorithm = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, model)

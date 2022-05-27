@@ -23,7 +23,7 @@ class DoubleDeepQLearning:
     def select_action(self, state):
         if np.random.rand() < self.epsilon:
             return random.randrange(self.env.action_space.n)
-        action = self.q_network.predict(state)
+        action = self.q_network.predict(state, verbose=0)
         return np.argmax(action[0])
 
     # cria uma memoria longa de experiencias
@@ -73,11 +73,11 @@ class DoubleDeepQLearning:
                 self.experience(state, action, reward, next_state, terminal)
                 state = next_state
                 self.experience_replay()
-                if i % self.update_target_frequency == 0:
-                    self.q_network.set_weights(self.target.get_weights())
                 if terminal:
                     print(f'Episódio: {i+1}/{self.episodes}. Score: {score}')
                     break
             rewards.append(score)
+            if i % self.update_target_frequency == 0:
+                self.q_network.set_weights(self.target.get_weights())
 
         return rewards

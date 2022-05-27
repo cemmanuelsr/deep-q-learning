@@ -5,9 +5,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tensorflow import keras
 from collections import deque
+import argparse
+
 from Model import Model
 from DeepQLearning import DeepQLearning
-import argparse
+from utils import *
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -18,6 +20,8 @@ parser.add_argument('-m', '--model', type=str, default='breakout')
 args = parser.parse_args()
 
 env = gym.make('ALE/Breakout-v5', render_mode='human')
+env = PreprocessAtari(env)
+env = FrameBuffer(env)
 np.random.seed(42)
 
 print('State space: ', env.observation_space)

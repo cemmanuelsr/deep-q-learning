@@ -1,7 +1,5 @@
 # Lunar Lander
 
-## Descrição
-
 Este é o agente criado sobre o ambiente do Lunar Lander. O objetivo do agente é pousar suavemente uma nave espacial entre duas bandeiras.
 
 ## Usagem

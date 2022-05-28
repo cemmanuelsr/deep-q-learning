@@ -21,7 +21,7 @@ parser.add_argument('-m', '--model', type=str, default='lunar_lander')
 args = parser.parse_args()
 
 env = gym.make('LunarLander-v2')
-np.random.seed(42)
+np.random.seed(1234)
 
 print('State space: ', env.observation_space)
 print('Action space: ', env.action_space)

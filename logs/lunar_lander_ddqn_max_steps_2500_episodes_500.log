@@ -1,0 +1,196 @@
+State space:  Box(-inf, inf, (8,), float32)
+Action space:  Discrete(4)
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 512)               4608      
+                                                                 
+ dense_1 (Dense)             (None, 256)               131328    
+                                                                 
+ dense_2 (Dense)             (None, 4)                 1028      
+                                                                 
+=================================================================
+Total params: 136,964
+Trainable params: 136,964
+Non-trainable params: 0
+_________________________________________________________________
+/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/flatbuffers/compat.py:19: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+Training with DDQN approach
+Episódio: 1/500. Score: -330.9781452984497
+Episódio: 2/500. Score: -229.6391411685521
+Episódio: 3/500. Score: -229.80433519913186
+Episódio: 4/500. Score: -214.7280982097534
+Episódio: 5/500. Score: -222.36596235750744
+Episódio: 6/500. Score: -225.34100091406708
+Episódio: 7/500. Score: -404.9420996901832
+Episódio: 8/500. Score: -419.39490842132926
+Episódio: 9/500. Score: -440.01268276712165
+Episódio: 10/500. Score: -362.9320147254057
+Episódio: 11/500. Score: -221.28011253834882
+Episódio: 12/500. Score: -247.33837911335564
+Episódio: 13/500. Score: -297.6847460310681
+Episódio: 14/500. Score: -49.432488063177004
+Episódio: 15/500. Score: -324.38541789803764
+Episódio: 16/500. Score: -337.6233567294213
+Episódio: 17/500. Score: -56.062546202374975
+Episódio: 18/500. Score: -301.382675848297
+Episódio: 19/500. Score: -652.8469096475887
+Episódio: 20/500. Score: -88.20074758196914
+Episódio: 21/500. Score: -248.51958261354267
+Episódio: 22/500. Score: -104.02018105902091
+Episódio: 23/500. Score: -214.32188883950556
+Episódio: 24/500. Score: -33.86220707617119
+Episódio: 25/500. Score: 164.32546449619122
+Episódio: 26/500. Score: -162.94902816354863
+Episódio: 27/500. Score: -204.95533983707165
+Episódio: 28/500. Score: -210.58347363322693
+Episódio: 29/500. Score: 223.39623801162
+Episódio: 30/500. Score: 11.469377411280433
+Episódio: 31/500. Score: -341.884898970893
+Episódio: 32/500. Score: -13.267521779496136
+Episódio: 33/500. Score: -166.57804338110049
+Episódio: 34/500. Score: -25.729547594048995
+Episódio: 35/500. Score: -52.11612327712332
+Episódio: 36/500. Score: -53.367246356649375
+Episódio: 37/500. Score: -181.09583754971212
+Episódio: 38/500. Score: -240.2543967114277
+Episódio: 39/500. Score: -236.97674572310717
+Episódio: 40/500. Score: -24.71724209579733
+Episódio: 41/500. Score: -63.264360954905555
+Episódio: 42/500. Score: -169.1209915207055
+Episódio: 43/500. Score: -164.5578680470008
+Episódio: 44/500. Score: -99.57397549071035
+Episódio: 45/500. Score: -272.35534340829236
+Episódio: 46/500. Score: -294.8651296150396
+Episódio: 47/500. Score: -135.37120081246445
+Episódio: 48/500. Score: -167.16651224752223
+Episódio: 49/500. Score: -240.962186072341
+Episódio: 50/500. Score: -234.7834555351944
+Episódio: 51/500. Score: -57.93904711661247
+Episódio: 52/500. Score: -635.5429949852963
+Episódio: 53/500. Score: -43.48757833937778
+Episódio: 54/500. Score: -29.16948955240221
+Episódio: 55/500. Score: -103.99953180773502
+Episódio: 56/500. Score: -213.25221091521826
+Episódio: 57/500. Score: -82.09112005630237
+Episódio: 58/500. Score: -307.7134847547193
+Episódio: 59/500. Score: -244.3414231124817
+Episódio: 60/500. Score: -250.90737937796862
+Episódio: 61/500. Score: -204.05322721677624
+Episódio: 62/500. Score: 247.46084209583574
+Episódio: 63/500. Score: 243.46476371619764
+Episódio: 64/500. Score: -195.75723551963608
+Episódio: 65/500. Score: -68.68036536809478
+Episódio: 66/500. Score: -228.4594828681391
+Episódio: 67/500. Score: -56.78063747151301
+Episódio: 68/500. Score: -142.5981056796873
+Episódio: 69/500. Score: -249.1195714658753
+Episódio: 70/500. Score: -90.40945693419994
+Episódio: 71/500. Score: -14.532734805013064
+Episódio: 72/500. Score: -41.346238947546254
+Episódio: 73/500. Score: -246.22142113369526
+Episódio: 74/500. Score: -57.36998096346713
+Episódio: 75/500. Score: -219.65257387138234
+Episódio: 76/500. Score: -27.339015390528104
+Episódio: 77/500. Score: -15.114777951440686
+Episódio: 78/500. Score: 221.0672246590249
+Episódio: 79/500. Score: 2.1048752877596826
+Episódio: 80/500. Score: -249.43211666169745
+Episódio: 81/500. Score: -220.8697935902785
+Episódio: 82/500. Score: -191.1276289816289
+Episódio: 83/500. Score: -266.39480490995084
+Episódio: 84/500. Score: -401.10802985368855
+Episódio: 85/500. Score: -97.07308443018097
+Episódio: 86/500. Score: -231.48370752806204
+Episódio: 87/500. Score: -316.1747885590547
+Episódio: 88/500. Score: -230.82872393574624
+Episódio: 89/500. Score: -237.97281515006307
+Episódio: 90/500. Score: -223.12440491003304
+Episódio: 91/500. Score: -45.50327188427518
+Episódio: 92/500. Score: -33.55573085133486
+Episódio: 93/500. Score: -350.85101978477286
+Episódio: 94/500. Score: -208.07516657532437
+Episódio: 95/500. Score: -58.963501014906754
+Episódio: 96/500. Score: -6.548871301915739
+Episódio: 97/500. Score: 30.011703851493195
+Episódio: 98/500. Score: 10.87135784767122
+Episódio: 99/500. Score: -159.7440365158716
+Episódio: 100/500. Score: -213.7727142419098
+Episódio: 101/500. Score: -11.054629767235951
+Episódio: 102/500. Score: -3.542417216339402
+Episódio: 103/500. Score: -250.79724038220476
+Episódio: 104/500. Score: -92.89148077141417
+Episódio: 105/500. Score: -42.3281352845122
+Episódio: 106/500. Score: -83.90654988114402
+Episódio: 107/500. Score: -311.2526254310783
+Episódio: 108/500. Score: 206.9389488885787
+Episódio: 109/500. Score: -252.78048273710147
+Episódio: 110/500. Score: 234.88430216569577
+Episódio: 111/500. Score: 271.88084372399385
+Episódio: 112/500. Score: 0.2880760879793627
+Episódio: 113/500. Score: -83.29691663371582
+Episódio: 114/500. Score: -197.02259457552128
+Episódio: 115/500. Score: -247.90408006988997
+Episódio: 116/500. Score: -229.1271850700763
+Episódio: 117/500. Score: -49.87244604459507
+Episódio: 118/500. Score: -68.22680730046608
+Episódio: 119/500. Score: -226.8122215315487
+Episódio: 120/500. Score: 216.80123554709212
+Episódio: 121/500. Score: -60.79909305488029
+Episódio: 122/500. Score: -19.43833463853663
+Episódio: 123/500. Score: -166.5235130762253
+Episódio: 124/500. Score: 248.8937511787057
+Episódio: 125/500. Score: -1.3195903870780228
+Episódio: 126/500. Score: -8.730128670488924
+Episódio: 127/500. Score: -210.36164241028735
+Episódio: 128/500. Score: -41.85414792675876
+Episódio: 129/500. Score: -206.33534669177965
+Episódio: 130/500. Score: -41.10997999686417
+Episódio: 131/500. Score: 235.3432012541785
+Episódio: 132/500. Score: 206.64465733637584
+Episódio: 133/500. Score: -77.32885364533777
+Episódio: 134/500. Score: -231.15292632081395
+Episódio: 135/500. Score: 193.41837824632427
+Episódio: 136/500. Score: -177.53113949713486
+Episódio: 137/500. Score: -205.06747605745738
+Episódio: 138/500. Score: 163.35216191165713
+Episódio: 139/500. Score: -98.28100936037771
+Episódio: 140/500. Score: -239.408307141444
+Episódio: 141/500. Score: 185.6271572438473
+Episódio: 142/500. Score: 238.4568152811284
+Episódio: 143/500. Score: -187.15370728384607
+Episódio: 144/500. Score: -111.36333951627121
+Episódio: 145/500. Score: -212.2132150871493
+Episódio: 146/500. Score: -19.92584191603561
+Episódio: 147/500. Score: -38.21418035238149
+Episódio: 148/500. Score: -188.79695805771567
+Episódio: 149/500. Score: -246.9573007879137
+Episódio: 150/500. Score: 206.41518988848327
+Episódio: 151/500. Score: 258.29005323607146
+Episódio: 152/500. Score: -164.66904564354607
+Episódio: 153/500. Score: -22.889151327205113
+Episódio: 154/500. Score: -87.39253078782409
+Traceback (most recent call last):
+  File "LunarLander.py", line 53, in <module>
+    rewards = algorithm.train()
+  File "/home/babayaga/Documents/rl/deep-q-learning/lunar-lander/DoubleDeepQLearning.py", line 74, in train
+    self.experience_replay()
+  File "/home/babayaga/Documents/rl/deep-q-learning/lunar-lander/DoubleDeepQLearning.py", line 55, in experience_replay
+    self.q_network.fit(states, targets_full, epochs=1, verbose=0)
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/keras/engine/training.py", line 1396, in fit
+    for epoch, iterator in data_handler.enumerate_epochs():
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/keras/engine/data_adapter.py", line 1193, in enumerate_epochs
+    data_iterator = iter(self._dataset)
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 494, in __iter__
+    return iterator_ops.OwnedIterator(self)
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 696, in __init__
+    self._create_iterator(dataset)
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 721, in _create_iterator
+    gen_dataset_ops.make_iterator(ds_variant, self._iterator_resource)
+  File "/home/babayaga/Documents/rl/rlenv/lib/python3.8/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 3409, in make_iterator
+    _result = pywrap_tfe.TFE_Py_FastPathExecute(
+KeyboardInterrupt

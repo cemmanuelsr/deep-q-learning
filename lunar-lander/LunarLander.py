@@ -31,6 +31,9 @@ if args.train:
     model.summary()
     model.compile(loss='mse', optimizer='adam')
 
+    target = Model(env)
+    target.compile(loss='mse', optimizer='adam')
+
     gamma = 0.99 
     epsilon = 1.0
     epsilon_min = 0.01
@@ -42,7 +45,7 @@ if args.train:
 
     if args.double:
         target_update_frequency = 50
-        algorithm = DoubleDeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, target_update_frequency)
+        algorithm = DoubleDeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, target, target_update_frequency)
         print('Training with DDQN approach')
     else:
         algorithm = DeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model)

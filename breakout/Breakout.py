@@ -28,6 +28,7 @@ from utils import *
 parser = argparse.ArgumentParser(prog='Breakout')
 parser.add_argument('-t', '--train', action='store_true')
 parser.add_argument('-m', '--model', type=str, default='breakout')
+parser.add_argument('-g', '--gif', action='store_true')
 args = parser.parse_args()
 
 env = suite_atari.load(
@@ -163,8 +164,11 @@ else:
     watch_driver = DynamicStepDriver(
         tf_env,
         saved_policy,
-        observers=[save_frames, ShowProgress(1000)],
-        num_steps=1000)
+        observers=[save_frames, ShowProgress(10000)],
+        num_steps=10000)
     final_time_step, final_policy_state = watch_driver.run()
+
+    if args.gif:
+        save_gif(frames, f'../demonstration/{args.model}.gif')
 
     plot_animation(frames)

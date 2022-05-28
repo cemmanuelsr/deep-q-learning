@@ -5,7 +5,7 @@ from tensorflow.keras.models import clone_model
 
 class DoubleDeepQLearning:
 
-    def __init__(self, env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, update_target_frequency):
+    def __init__(self, env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, q_network, target, update_target_frequency):
         self.env = env
         self.gamma = gamma
         self.epsilon = epsilon
@@ -15,9 +15,8 @@ class DoubleDeepQLearning:
         self.batch_size = batch_size
         self.memory = memory
         self.max_steps = max_steps
-        self.q_network = model
-        self.target = clone_model(model)
-        self.target.compile(loss='mse', optimizer='adam')
+        self.q_network = q_network
+        self.target = target
         self.update_target_frequency = update_target_frequency
 
     def select_action(self, state):
@@ -48,7 +47,7 @@ class DoubleDeepQLearning:
             next_max = np.amax(self.target.predict_on_batch(next_states), axis=1)
             
             targets = rewards + self.gamma * (next_max) * (1 - terminals)
-            targets_full = self.target.predict_on_batch(states)
+            targets_full = self.q_network.predict_on_batch(states)
             indexes = np.array([i for i in range(self.batch_size)])
             
             # usando os q-valores para atualizar os pesos da rede

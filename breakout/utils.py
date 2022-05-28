@@ -41,3 +41,12 @@ def plot_animation(frames, repeat=False, interval=40):
         fig, update_scene, fargs=(frames, patch),
         frames=len(frames), repeat=repeat, interval=interval)
     plt.show()
+
+def save_gif(frames, path, limit=200):
+    fig = plt.figure()
+    patch = plt.imshow(frames[0])
+    plt.axis('off')
+    anim = animation.FuncAnimation(
+        fig, update_scene, fargs=(frames, patch),
+        frames=limit, interval=40, blit=True)
+    anim.save(path, writer='imagemagick', fps=60)

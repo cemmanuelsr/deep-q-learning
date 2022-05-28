@@ -26,4 +26,11 @@ Onde `--train` é passado se o objetivo for treinar o modelo e `--double` se des
 
 Os resultados podem ser vistos abaixo:
 
+<div style="display : flex; justify-content: space-around;">
 
+![Lunar Lander DQN](../results/lunar_land_max_steps_2500.jpg)
+![Lunar Lander DDQN](../results/lunar_lander_ddqn_max_steps_2500_episodes_500.jpg)
+
+</div>
+
+A esquerda, utilizando a abordagem de DQN e a direita DDQN. Podemos ver que houve na verdade uma perda de desempenho, durante o treinamento foi possível observar que, por alguma razão esquisita, o agente fica flutuando um pouco acima da bandeira ou parado nas redondezas destas e isso deve justificar esse resultado.

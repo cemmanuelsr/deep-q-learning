@@ -40,5 +40,4 @@ def plot_animation(frames, repeat=False, interval=40):
     anim = animation.FuncAnimation(
         fig, update_scene, fargs=(frames, patch),
         frames=len(frames), repeat=repeat, interval=interval)
-    plt.close()
-    return anim
+    plt.show()

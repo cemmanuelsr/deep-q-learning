@@ -135,7 +135,6 @@ if args.train:
     train_agent(n_iterations=100000)
 
     import matplotlib.pyplot as plt
-    print(train_losses)
     plt.plot(train_losses)
     plt.xlabel('Episodes')
     plt.ylabel('Loss')

@@ -85,3 +85,5 @@ O gráfico de loss para o treinamento pode ser visto abaixo:
 Podemos ver que o gráfico é condesado devido ao alto número de episódios, mas que o resultado é parecido com o [Lunar Lander](https://github.com/cemmanuelsr/deep-q-learning/tree/master/lunar-lander), ou seja, atinge um estado bom mas oscila muito.
 
 No fim, o agente não consegue completar mais que uma ou duas dezenas de pontos. Para melhorar isso, pode ser feito testes com outras topologias de redes neurais, mas é preciso lembrar que quanto mais layers, mais pesos e mais demora no treinamento que já toma algumas horas.
+
+No diretório de [logs](https://github.com/cemmanuelsr/deep-q-learning/tree/master/logs), pode ser visto o log do treinamento e verificar, a cada 1000 episódios, qual era a média de pontos do agente.

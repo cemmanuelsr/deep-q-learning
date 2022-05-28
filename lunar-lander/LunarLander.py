@@ -41,7 +41,7 @@ if args.train:
     max_steps = 2500
 
     if args.double:
-        target_update_frequency = 10
+        target_update_frequency = 50
         algorithm = DoubleDeepQLearning(env, gamma, epsilon, epsilon_min, epsilon_dec, episodes, batch_size, memory, max_steps, model, target_update_frequency)
         print('Training with DDQN approach')
     else:
